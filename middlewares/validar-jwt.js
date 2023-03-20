@@ -7,10 +7,10 @@ const Usuario = require('../models/user.model');
 const validarJWT = async( req = request, res = response, next ) => {
 
     // no toma el token -- Verificar
-    // const token = req.header('x-token');
+    const token = req.header('x-token');
 
     //como creo
-    const { token } = req.query;
+    // const { token } = req.query;
 
     console.log(token);
     if ( !token ) {
