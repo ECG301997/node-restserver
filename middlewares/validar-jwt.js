@@ -6,13 +6,13 @@ const Usuario = require('../models/user.model');
 
 const validarJWT = async( req = request, res = response, next ) => {
 
-    // no toma el token -- Verificar
+    // TODO: no toma el token -- Verificar
     const token = req.header('x-token');
+     console.log(token);
 
     //como creo
     // const { token } = req.query;
 
-    console.log(token);
     if ( !token ) {
         return res.status(401).json({
             msg: 'No hay token en la petición'
@@ -33,7 +33,7 @@ const validarJWT = async( req = request, res = response, next ) => {
         }
 
         // Verificar si el uid tiene estado true
-        if ( !usuario.estado ) {
+        if ( usuario.estado ===false ) {
             return res.status(401).json({
                 msg: 'Token no válido - usuario con estado: false'
             })
